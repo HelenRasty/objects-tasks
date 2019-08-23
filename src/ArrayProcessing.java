@@ -74,22 +74,41 @@ public class ArrayProcessing {
     public int[] sortEvenNumber(int[] arr) {
         int j = 0;
         int k = 0;
-        int[] evenNumbersArr = new int[(arr.length / 2) + 1];
+        int[] evenNumbersArr1 = new int[(arr.length / 2) + 1];
+        int[] evenNumbersArr2 = new int[arr.length / 2];
         int[] sortedArr = new int[arr.length];
 
-        for (int i = 0; i < arr.length; i = i + 2) {
-            evenNumbersArr[j] = arr[i];
-            j++;
-        }
-        Arrays.sort(evenNumbersArr);
+        if (arr.length % 2 == 0) {
+            for (int i = 0; i < arr.length; i = i + 2) {
+                evenNumbersArr2[j] = arr[i];
+                j++;
+            }
+            Arrays.sort(evenNumbersArr2);
 
-        for (int i = 0; i < arr.length; i = i + 2) {
-            sortedArr[i] = evenNumbersArr[k];
-            k++;
-        }
+            for (int i = 0; i < arr.length; i = i + 2) {
+                sortedArr[i] = evenNumbersArr2[k];
+                k++;
+            }
 
-        for (int i = 1; i < arr.length - 1; i = i + 2) {
-            sortedArr[i] = arr[i];
+            for (int i = 1; i < arr.length; i = i + 2) {
+                sortedArr[i] = arr[i];
+            }
+
+        } else {
+            for (int i = 0; i < arr.length; i = i + 2) {
+                evenNumbersArr1[j] = arr[i];
+                j++;
+            }
+            Arrays.sort(evenNumbersArr1);
+
+            for (int i = 0; i < arr.length; i = i + 2) {
+                sortedArr[i] = evenNumbersArr1[k];
+                k++;
+            }
+
+            for (int i = 1; i < arr.length - 1; i = i + 2) {
+                sortedArr[i] = arr[i];
+            }
         }
 
         return sortedArr;
